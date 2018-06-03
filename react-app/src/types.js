@@ -1,0 +1,7 @@
+// Login Actions Type
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_ERROR = 'LOGIN_ERROR'
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
+
+// Books Actions Types
+export const FETCH_BOOKS_SUCCESS = 'FETCH_BOOKS_SUCCESS'
