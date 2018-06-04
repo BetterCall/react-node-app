@@ -18,7 +18,7 @@ class LoginPage extends Component {
 
   submit = (data) =>
     this.props.login(data)
-      .then( () => this.props.history.push('/dashboard'))
+      .then( () => this.props.history.push('/'))
 
   render() {
     return (
