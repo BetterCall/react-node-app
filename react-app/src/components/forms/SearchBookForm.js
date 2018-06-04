@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-import Api from '../../api/Api'
+//import Api from '../../api/Api'
 
 import {Form , Dropdown} from 'semantic-ui-react'
 
@@ -45,7 +45,7 @@ export class SearchBookForm extends Component {
     }
     // set loading state to true
     this.setState({loading: true})
-
+/**
     Api.BookApi.fetchBookByName(this.state.query)
       .then(books => {
         const options = []
@@ -66,8 +66,8 @@ export class SearchBookForm extends Component {
           options : options ,
           books : booksHash
         })
-
       })
+      **/
 
 
   }

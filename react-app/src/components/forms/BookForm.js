@@ -62,7 +62,7 @@ export class BookForm extends Component { // eslint-disable-line react/prefer-st
     if (Object.keys(errors).length === 0) {
 
       this.setState({loading : true})
-
+        /**
       this.props.submit(this.state.data)
       .catch(err => {
         errors.global = err.message
@@ -70,6 +70,7 @@ export class BookForm extends Component { // eslint-disable-line react/prefer-st
         //errors.password = "Can't be blank"
           this.setState({errors , loading : false})
         })
+        **/
 
     }
   }
