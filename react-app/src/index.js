@@ -15,7 +15,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import rootReducer from './rootReducer'
-import {loginSuccess} from './actions/auth'
+import {userLoggedIn} from './actions/auth'
 
 // create store
 const store = createStore(
@@ -26,7 +26,7 @@ const store = createStore(
 // check if user is already authenticated
 if(localStorage.appUserUID) {
   const user = { uid : localStorage.appUserUID}
-  store.dispatch(loginSuccess(user))
+  store.dispatch(userLoggedIn(user))
 }
 
 ReactDOM.render(

@@ -9,7 +9,7 @@ const InlineError = ({text}) => (
 )
 
 
-InlineError.PropTypes = {
+InlineError.propTypes = {
   text : PropTypes.string.isRequired
 }
 

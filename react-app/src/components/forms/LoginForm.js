@@ -8,6 +8,10 @@ import InlineError from '../messages/InlineError'
 
 /**
  *  LoginForm
+ *
+ *  props : submit : submit function
+ *
+ *
  */
 export class LoginForm extends Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -20,7 +24,11 @@ export class LoginForm extends Component { // eslint-disable-line react/prefer-s
     errors : {}
   }
 
-
+  /**
+  * onChange()
+  *
+  *
+  **/
   onChange = e => {
     this.setState(
       {
@@ -32,6 +40,13 @@ export class LoginForm extends Component { // eslint-disable-line react/prefer-s
     )
   }
 
+  /**
+  * onSubmit()
+  *   set loading state to true
+  *   validate data
+  *   if errors is empty execute props : submit()
+  *
+  **/
   onSubmit = () => {
     const errors = this.validate(this.state.data)
     this.setState({errors})
@@ -40,22 +55,25 @@ export class LoginForm extends Component { // eslint-disable-line react/prefer-s
 
       this.setState({loading : true})
 
-      this.props.submit(this.state.data)
-      .catch(err => {
-        errors.global = err.message
-        //errors.email = "Can't be blank"
-        //errors.password = "Can't be blank"
-          this.setState({errors , loading : false})
-        })
+      this.props
+        .submit(this.state.data)
+        .catch(err => this.setState({
+            errors : err.response.data.errors ,
+            loading : false
+          })
+        )
 
     }
   }
 
+  /**
+  * validate()
+  *
+  **/
   validate = (data) => {
     const errors = {}
 
     if (!data.password) errors.password = "Can't be blank"
-
     if (!data.email) errors.email = "Can't be blank"
     //if(!Validator.isEmail(data.email)) errors.email = "email format required"
 
@@ -70,7 +88,6 @@ export class LoginForm extends Component { // eslint-disable-line react/prefer-s
       <Form
         onSubmit={this.onSubmit}
         loading={loading}
-
       >
 
         {!!errors.global &&
@@ -92,7 +109,6 @@ export class LoginForm extends Component { // eslint-disable-line react/prefer-s
             />
           {errors.email && <InlineError text={errors.email}/>}
         </Form.Field>
-
 
         <Form.Field  error={!!errors.password}>
             <label htmlFor="password">Password</label>
@@ -117,6 +133,5 @@ export class LoginForm extends Component { // eslint-disable-line react/prefer-s
 LoginForm.propTypes = {
   submit : PropTypes.func.isRequired
 }
-
 
 export default LoginForm;

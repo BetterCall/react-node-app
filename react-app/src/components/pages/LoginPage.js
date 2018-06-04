@@ -7,9 +7,7 @@
  import {Link} from 'react-router-dom'
 
 import {connect} from 'react-redux'
-import {login} from '../../actions/auth'
-
- import Api from '../../api/Api'
+import { login } from '../../actions/auth'
 
 import LoginForm from '../forms/LoginForm'
 
@@ -20,7 +18,7 @@ class LoginPage extends Component {
 
   submit = (data) =>
     this.props.login(data)
-      .then(() => this.props.history.push('/dashboard'))
+      .then( () => this.props.history.push('/dashboard'))
 
   render() {
     return (
@@ -44,4 +42,4 @@ LoginPage.propTypes = {
 }
 
 
- export default connect(null, {login})(LoginPage)
+ export default connect(null, { login })(LoginPage)

@@ -1,37 +1,39 @@
-import Api from '../api/Api'
-import {LOGIN_SUCCESS , LOGIN_ERROR , LOGOUT_SUCCESS} from '../types'
+import api from '../api/api'
 
-export const login = (credentials) => (dispatch) => {
+import { USER_LOGGED_IN, USER_LOGGED_OUT } from "../types";
 
-  return new Promise(function(resolve, reject) {
-    Api.AuthApi.loginWithEmail(credentials)
-      .then((user) => {
-        localStorage.appUserUID = user.uid
-        dispatch(loginSuccess(user))
-        resolve(user)
-      })
-      .catch(e => {
-        dispatch(loginError(e))
-        reject(e)
-      })
-  })
 
-}
-
-export const logout = () => (dispatch) => {
-  localStorage.removeItem('appUserUID')
-  dispatch(logoutSuccess())
-}
-
-export const loginSuccess = (user) => ({
-  type : LOGIN_SUCCESS,
+export const userLoggedIn = user => ({
+  type: USER_LOGGED_IN,
   user
-})
-const loginError = (err) => ( {
-  type : LOGIN_ERROR,
-  err
-})
+});
 
-const logoutSuccess = () => ( {
-  type : LOGOUT_SUCCESS
-})
+export const userLoggedOut = () => ({
+  type: USER_LOGGED_OUT
+});
+
+export const login = credentials => dispatch =>
+  api.user.loginWithEmail(credentials).then(user => {
+    localStorage.bookwormJWT = user.token;
+    //setAuthorizationHeader(user.token);
+    dispatch(userLoggedIn({ ...user, loaded: true }));
+  });
+
+export const logout = () => dispatch => {
+  localStorage.removeItem("bookwormJWT");
+  //setAuthorizationHeader();
+  dispatch(userLoggedOut());
+};
+
+export const confirm = token => dispatch =>
+  api.user.confirm(token).then(user => {
+    localStorage.bookwormJWT = user.token;
+    dispatch(userLoggedIn(user));
+  });
+
+export const resetPasswordRequest = ({ email }) => () =>
+  api.user.resetPasswordRequest(email);
+
+export const validateToken = token => () => api.user.validateToken(token);
+
+export const resetPassword = data => () => api.user.resetPassword(data);

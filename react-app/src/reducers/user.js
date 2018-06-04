@@ -1,12 +1,12 @@
-import {LOGIN_SUCCESS , LOGIN_ERROR , LOGOUT_SUCCESS} from '../types'
+import { USER_LOGGED_IN, USER_LOGGED_OUT } from "../types";
 
 export default function user(state = {} , action = {}) {
   switch (action.type) {
 
-    case LOGIN_SUCCESS:
+    case USER_LOGGED_IN:
       return action.user
 
-    case LOGOUT_SUCCESS :
+    case USER_LOGGED_OUT :
       return {}
 
     default: return state
