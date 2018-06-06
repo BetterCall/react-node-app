@@ -24,8 +24,8 @@ const store = createStore(
 )
 
 // check if user is already authenticated
-if(localStorage.appUserUID) {
-  const user = { uid : localStorage.appUserUID}
+if(localStorage.bookwormJWT) {
+  const user = { token : localStorage.bookwormJWT}
   store.dispatch(userLoggedIn(user))
 }
 
