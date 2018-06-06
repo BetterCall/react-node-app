@@ -18,7 +18,14 @@ import {Button} from 'semantic-ui-react'
 const HomePage  = ({isAuthenticated , logout}) => (
   <div>
     <h1>hOME PAGE</h1>
-    {isAuthenticated ? <Button onClick={() => logout()} inverted color='red'>Log out</Button> : <Link to="/login">Login</Link>  }
+    {isAuthenticated ? (
+      <Button onClick={() => logout()} inverted color='red'>Log out</Button>
+
+    ) : (
+      <div>
+        <Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link>
+      </div>
+    )}
   </div>
 )
 

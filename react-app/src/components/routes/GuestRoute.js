@@ -25,7 +25,7 @@ GuestRoute.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated : !!state.user.uid
+    isAuthenticated : !!state.user.token
   }
 }
 

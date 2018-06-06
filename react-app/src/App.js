@@ -10,6 +10,7 @@ import GuestRoute from './components/routes/GuestRoute'
 
 import HomePage from './components/pages/HomePage'
 import LoginPage from './components/pages/LoginPage'
+import SignupPage from './components/pages/SignupPage'
 import DashboardPage from './components/pages/DashboardPage'
 
 import NewBookPage from './components/pages/NewBookPage'
@@ -33,6 +34,13 @@ const App = ({location , isAuthenticated}) => (
       exact
       path="/login"
       component={ LoginPage }
+    />
+
+    <GuestRoute
+      location={location}
+      exact
+      path="/signup"
+      component={ SignupPage }
     />
     <AuthRoute
       location={location}
@@ -59,7 +67,7 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated : !!state.user.uid
+    isAuthenticated : !!state.user.token
   }
 }
 

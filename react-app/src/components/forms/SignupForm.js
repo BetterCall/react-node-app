@@ -1,27 +1,25 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-import {Form , Button , Message} from 'semantic-ui-react'
-import Validator from 'validator'
-
+import { Form , Button,Message } from 'semantic-ui-react'
 import InlineError from '../messages/InlineError'
 
 /**
- *  LoginForm
- *
- *  props : submit : submit function
- *
- *
+ * SignupForm
  */
-export class LoginForm extends Component { // eslint-disable-line react/prefer-stateless-function
+export class SignupForm extends Component { // eslint-disable-line react/prefer-stateless-function
 
-  state = {
-    data : {
-      email : '' ,
-      password : ''
-    } ,
-    loading : false ,
-    errors : {}
+  constructor(props) {
+    super(props)
+    this.state = {
+      data : {
+        email : '' ,
+        password : '' ,
+      } ,
+      loading : false ,
+      errors : {}
+
+    }
   }
 
   /**
@@ -39,6 +37,7 @@ export class LoginForm extends Component { // eslint-disable-line react/prefer-s
       }
     )
   }
+
 
   /**
   * onSubmit()
@@ -75,20 +74,17 @@ export class LoginForm extends Component { // eslint-disable-line react/prefer-s
 
     if (!data.password) errors.password = "Can't be blank"
     if (!data.email) errors.email = "Can't be blank"
-    if(!Validator.isEmail(data.email)) errors.email = "Invalid Email"
+    //if(!Validator.isEmail(data.email)) errors.email = "email format required"
 
     return errors
   }
 
-  render() {
 
-    const {data, errors ,loading} = this.state
+  render() {
+    const { data,loading, errors } = this.state
 
     return (
-      <Form
-        onSubmit={this.onSubmit}
-        loading={loading}
-      >
+      <Form onSubmit={this.onSubmit} loading={loading}>
 
         {!!errors.global &&
           <Message negative>
@@ -100,10 +96,10 @@ export class LoginForm extends Component { // eslint-disable-line react/prefer-s
         <Form.Field error={!!errors.email}>
             <label htmlFor="email">Email</label>
             <input
-              type="text"
+              type="email"
               id="email"
               name="email"
-              placeholder="Exemple@exemple.com"
+              placeholder="exemple@email.com"
               value={data.email}
               onChange={this.onChange}
             />
@@ -124,14 +120,15 @@ export class LoginForm extends Component { // eslint-disable-line react/prefer-s
 
         </Form.Field>
 
-        <Button primary>Login</Button>
+
+        <Button primary>Sign Up</Button>
       </Form>
     );
   }
 }
 
-LoginForm.propTypes = {
-  submit : PropTypes.func.isRequired
+SignupForm.propTypes = {
+  submit: PropTypes.func.isRequired
 }
 
-export default LoginForm;
+export default SignupForm;

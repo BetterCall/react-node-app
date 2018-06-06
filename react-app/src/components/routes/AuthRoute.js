@@ -15,7 +15,7 @@ const AuthRoute = ({isAuthenticated , component : Component , ...rest }) => (
       props => isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
     }
   />
-)
+)   
 
 
 AuthRoute.propTypes = {
@@ -25,7 +25,7 @@ AuthRoute.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated : !!state.user.uid
+    isAuthenticated : !!state.user.token
   }
 }
 

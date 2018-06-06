@@ -14,7 +14,7 @@ import gravatarUrl from 'gravatar-url'
  * TopNavigation
  */
 const TopNavigation = ({ user, logout }) => (
-  <Menu secondary pointing>
+  <Menu secondary pointing style={{marginTop : 15}}>
   <Menu.Item as={Link} to="/dashboard">
     Dashboard
   </Menu.Item>
