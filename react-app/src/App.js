@@ -11,6 +11,7 @@ import GuestRoute from './components/routes/GuestRoute'
 import HomePage from './components/pages/HomePage'
 import LoginPage from './components/pages/LoginPage'
 import SignupPage from './components/pages/SignupPage'
+import ConfirmationPage from './components/pages/ConfirmationPage'
 import DashboardPage from './components/pages/DashboardPage'
 
 import NewBookPage from './components/pages/NewBookPage'
@@ -29,6 +30,13 @@ const App = ({location , isAuthenticated}) => (
       path="/"
       component={ HomePage }
     />
+    <Route
+      location={location}
+      exact
+      path="/confirmation/:token"
+      component={ ConfirmationPage }
+    />
+
     <GuestRoute
       location={location}
       exact

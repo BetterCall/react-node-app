@@ -33,7 +33,7 @@ const TopNavigation = ({ user, logout }) => (
 
 TopNavigation.propTypes = {
   user: PropTypes.shape({
-    uid: PropTypes.string.isRequired
+    token: PropTypes.string.isRequired
   }).isRequired,
   logout: PropTypes.func.isRequired
 };
