@@ -36,3 +36,25 @@ export function sendConfirmationEmail(user) {
     console.log('Message sent: ' + info.response);
   })
 }
+
+export function sendResetPasswordEmail(user) {
+  const transport = setup()
+
+  const email = {
+    from,
+    to : user.email,
+    suject : "Reset Password" ,
+    text : `
+      Reset Password with this link
+      ${user.generateResetPasswordLink()}
+    `
+  }
+
+  transport.sendMail(email , (error , info ) => {
+    if (error)
+      return console.log(error)
+
+      console.log('Message sent: ' + info.response )
+  })
+
+}

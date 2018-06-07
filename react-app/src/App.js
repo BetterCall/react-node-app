@@ -10,6 +10,8 @@ import GuestRoute from './components/routes/GuestRoute'
 
 import HomePage from './components/pages/HomePage'
 import LoginPage from './components/pages/LoginPage'
+import ForgotPasswordPage from './components/pages/ForgotPasswordPage'
+import ResetPasswordPage from './components/pages/ResetPasswordPage'
 import SignupPage from './components/pages/SignupPage'
 import ConfirmationPage from './components/pages/ConfirmationPage'
 import DashboardPage from './components/pages/DashboardPage'
@@ -42,6 +44,20 @@ const App = ({location , isAuthenticated}) => (
       exact
       path="/login"
       component={ LoginPage }
+    />
+
+    <GuestRoute
+      location={location}
+      exact
+      path="/forgot_password"
+      component={ ForgotPasswordPage }
+    />
+
+    <GuestRoute
+      location={location}
+      exact
+      path="/reset_password/:token"
+      component={ ResetPasswordPage }
     />
 
     <GuestRoute
