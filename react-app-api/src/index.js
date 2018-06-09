@@ -5,6 +5,8 @@ import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import Promise from 'bluebird'
 
+const passportSetup = require('./config/passport-setup')
+
 // routes
 import auth from './routes/auth'
 import users from './routes/users'

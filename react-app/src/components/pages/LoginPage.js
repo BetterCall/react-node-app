@@ -10,6 +10,8 @@ import {connect} from 'react-redux'
 import { login } from '../../actions/auth'
 
 import LoginForm from '../forms/LoginForm'
+import FacebookLoginButton from '../loginButtons/FacebookLoginButton'
+import InstagramLoginButton from '../loginButtons/InstagramLoginButton'
 
  /**
   * LoginPage
@@ -24,10 +26,12 @@ class LoginPage extends Component {
     return (
       <div>
         <h1>Login Page</h1>
+        <FacebookLoginButton />
+        <InstagramLoginButton />
+
+
         <Link to="/">Home</Link>
-
         <LoginForm submit={this.submit}/>
-
         <Link to="/forgot_password">Forgot password</Link>
       </div>
     )

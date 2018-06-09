@@ -2,9 +2,12 @@ import axios from 'axios'
 
 export default {
   user: {
+
     loginWithEmail: credentials =>
-      axios.post("/api/auth", { credentials })
-      .then(res => res.data.user),
+      axios.post("/api/auth", { credentials }).then(res => res.data.user),
+
+    loginWithGoogle: () =>
+      axios.get("/api/auth/google") ,
 
     signup : user =>
       axios.post("/api/users", { user })
