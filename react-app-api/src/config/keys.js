@@ -1,13 +1,12 @@
-export const google = {
-  clientID : '511040705587-6vv1b1agqarh82v89m9bbfq74ukh6s24.apps.googleusercontent.com' ,
-  clientSecret: 'INSERT-CLIENT-SECRET-HERE',
-  clientSecret : 'tbnh4jx354LCp834j-VOHG4_' ,
-  callbackURL: 'http://localhost:8080/auth/google/callback',
+export const googleKeys = {
+  clientID : '511040705587-tst0p9rnfrqe96saec8d0ql5n0fpcvpu.apps.googleusercontent.com' ,
+  clientSecret : 'b4IfnQMOzjlbS2nsuQFHljKA' ,
+  callbackURL: '/auth/google/callback',
 }
 
-export const facebook = {
+export const facebookKeys = {
   clientID: 'INSERT-CLIENT-ID-HERE',
   clientSecret: 'INSERT-CLIENT-SECRET-HERE',
-  callbackURL: 'http://localhost:8080/auth/facebook/callback',
+  callbackURL: '/auth/facebook/callback',
   profileFields: ['id', 'name', 'displayName', 'picture', 'email'],
 }

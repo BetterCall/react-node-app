@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loginWithGoogle } from '../../actions/auth'
 
+import GoogleLogin from 'react-google-login';
 
 import { Button, Icon, Label } from 'semantic-ui-react'
 /**
@@ -15,32 +16,39 @@ export class GoogleLoginButton extends Component { // eslint-disable-line react/
     super(props)
 
     this.state = {
-      loading : false
+      userId :'' ,
+      name :'' ,
+      email :''
     }
   }
 
   handleClick = () => {
     this.setState({loading : true})
 
-    this.props.loginWithGoogle()
 
   }
 
+  response = (response) => {
+    console.log('Google access')
+    console.log(response);
+  }
+
   render() {
+
     return (
       <div>
 
-        <Button color='google plus' onClick={this.handleClick}>
-          <Icon name='google plus' /> Google Plus
-        </Button>
+        <GoogleLogin
+          clientId="511040705587-tst0p9rnfrqe96saec8d0ql5n0fpcvpu.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={this.response}
+          onFailure={this.response}
+        />
 
       </div>
     );
   }
 }
 
-GoogleLoginButton.propTypes = {
-  loginWithGoogle: PropTypes.func.isRequired
-}
 
-export default connect( null, { loginWithGoogle } ) ( GoogleLoginButton )
+export default ( GoogleLoginButton )

@@ -12,6 +12,7 @@ import { login } from '../../actions/auth'
 import LoginForm from '../forms/LoginForm'
 import FacebookLoginButton from '../loginButtons/FacebookLoginButton'
 import InstagramLoginButton from '../loginButtons/InstagramLoginButton'
+import GoogleLoginButton from '../loginButtons/GoogleLoginButton'
 
  /**
   * LoginPage
@@ -28,6 +29,7 @@ class LoginPage extends Component {
         <h1>Login Page</h1>
         <FacebookLoginButton />
         <InstagramLoginButton />
+        <GoogleLoginButton />
 
 
         <Link to="/">Home</Link>

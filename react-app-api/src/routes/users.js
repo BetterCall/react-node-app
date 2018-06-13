@@ -6,6 +6,11 @@ import parseErrors from '../utils/parseErrors'
 
 const router = express.Router()
 
+/**
+* Route : "/"
+*   create user with email and password
+*
+**/
 router.post('/', (req, res)=> {
 
   const { email, password } = req.body.user
@@ -21,5 +26,11 @@ router.post('/', (req, res)=> {
     })
     .catch( err => res.status(400).json({errors : parseErrors(err.errors)}))
 })
+
+/**
+*
+*
+*
+**/
 
 export default router
